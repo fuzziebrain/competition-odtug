@@ -1,0 +1,15 @@
+{
+  "name": "competition-odtug",
+  "version": "1.0.0",
+  "description": "Redirects for ODTUG competition website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adrian Png <png.adrian@yahoo.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.3",
+    "http-proxy-middleware": "^0.17.4"
+  }
+}
