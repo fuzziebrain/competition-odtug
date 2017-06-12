@@ -11,7 +11,12 @@ app.get('/', function(req, res, next){
 app.use(['/i', '/pls'], proxy(
   {
     target: 'https://apex.oracle.com',
-    changeOrigin: true
+    changeOrigin: true,
+    onProxyReq: function(proxyReq, req, res) {
+      if(req.connection.encrypted && req.headers.origin) {
+        proxyReq.setHeader('origin', req.headers.origin.replace(/^https:/,'http:'));
+      }
+    }
   }
 ));
 
