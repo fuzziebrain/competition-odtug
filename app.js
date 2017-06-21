@@ -28,6 +28,7 @@ app.use(['/i', '/pls/apex'], proxy(
           element = element.replace(' secure;', '');
           cookies.push(element);
         });
+        proxyRes.headers['set-cookie'] = cookies;
       }
     }
   }
