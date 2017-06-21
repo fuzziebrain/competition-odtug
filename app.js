@@ -24,6 +24,7 @@ app.use(['/i', '/pls/apex'], proxy(
     target: targetUrl,
     changeOrigin: true,
     autoRewrite: true,
+    xfwd: true,
     protocolRewrite: sslEnabled ? 'https' : 'http',
     onProxyReq: function(proxyReq, req, res) {
       proxyReq.setHeader('origin', targetUrl);
