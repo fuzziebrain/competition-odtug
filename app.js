@@ -13,17 +13,19 @@ var sslOptions = {
   cert: fs.readFileSync('cert.pem')
 };
 
+var targetUrl = 'https://apex.oracle.com';
+
 app.get('/', function(req, res, next){
   res.redirect('/pls/apex/f?p=16557:1');
 });
 
 app.use(['/i', '/pls/apex'], proxy(
   {
-    target: 'https://apex.oracle.com',
+    target: targetUrl,
     changeOrigin: true,
     onProxyReq: function(proxyReq, req, res) {
       if (!req.connection.encrypted && req.headers.origin){
-        proxyReq.setHeader('origin', req.headers.origin.replace(/^http:/,'https:'));
+        proxyReq.setHeader('origin', targetUrl);
       }
     },
     onProxyRes: function(proxyRes, req, res) {
