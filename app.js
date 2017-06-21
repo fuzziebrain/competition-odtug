@@ -21,6 +21,11 @@ app.use(['/i', '/pls/apex'], proxy(
   {
     target: 'https://apex.oracle.com',
     changeOrigin: true,
+    onProxyReq: function(proxyReq, req, res) {
+      if (!req.connection.encrypted && req.headers.origin){
+        proxyReq.setHeader('origin', req.headers.origin.replace(/^http:/,'https:'));
+      }
+    },
     onProxyRes: function(proxyRes, req, res) {
       if (!req.connection.encrypted && proxyRes.headers['set-cookie']) {
         var cookies = [];
