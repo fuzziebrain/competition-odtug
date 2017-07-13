@@ -1,6 +1,9 @@
 {
   "name": "competition-odtug",
   "version": "1.0.0",
+  "engines": {
+    "node": "6.11.x"
+  },
   "description": "Redirects for ODTUG competition website",
   "main": "app.js",
   "scripts": {
